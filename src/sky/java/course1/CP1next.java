@@ -30,8 +30,17 @@ public class CP1next {
             depts[i] = Department.setDepartment(i, deptNames[i]);
         }
         printPersonnelInfo();
-        indexSalaryAllStaff(10);
+        indexSalaryAllStaff(10); // вызов метода блока повышенной сложности
         printPersonnelInfo();
+
+        /** Далее вызываются методы блока задач повышенной сложности
+         При необходимости проверки правильности их работы могут вызываться также методы базового блока
+         * */
+
+        for (int i = 0; i < depts.length; i++) {
+            printDeptInfo(i);
+        }
+
 
     }
 
@@ -116,5 +125,20 @@ public class CP1next {
             newSalary = (personnel[i].getSalary()) * (index + 100) / 100;
             personnel[i].setSalary(newSalary);
         }
+    }
+
+    public static void printDeptInfo(int deptId) {
+
+        System.out.println("\nDEPARTMENT NO." + deptId);
+        System.out.println("Function: " + depts[deptId].getName().toUpperCase());
+        for (int i = 0; i <= employeeCounter - 1; i++) {
+            if (personnel[i].getDeptId() == deptId) {
+                printEmployeeInfo(i);
+            }
+        }
+    }
+
+    public static void printEmployeeInfo(int persId) {
+        System.out.println(personnel[persId].getPerson() + " Salary: " + personnel[persId].getSalary());
     }
 }
