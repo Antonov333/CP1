@@ -40,7 +40,17 @@ public class CP1next {
         for (int i = 0; i < depts.length; i++) {
             printDeptInfo(i);
         }
+        Person gary = new Person("Gary", "Alexandrovich", "Vainerchuk");
+        Employee marketingManager = new Employee(1, gary, 5, 205000);
+        enroll(marketingManager);
 
+        printPersonnelInfo();
+        System.out.println(personnel[employeeCounter - 1]);
+
+        printDeptInfo(5);
+
+        printDeptMinSalaryInfo(1);
+        
 
     }
 
@@ -140,5 +150,41 @@ public class CP1next {
 
     public static void printEmployeeInfo(int persId) {
         System.out.println(personnel[persId].getPerson() + " Salary: " + personnel[persId].getSalary());
+    }
+
+    public static int countDeptPersonell(int deptId) {
+        int deptPeopleCount = 0;
+
+        for (int j = 0; j < employeeCounter; j++) {
+            if (personnel[j].getDeptId() == deptId) {
+                deptPeopleCount++;
+            }
+        }
+        return deptPeopleCount;
+    }
+
+    public static void printDeptMinSalaryInfo(int deptId) {
+        if (countDeptPersonell(deptId) == 0) {
+            System.out.println("No personell hired to Dept. No." + deptId + " " + depts[deptId].getName());
+        } else {
+            int minSalary = -1,
+                    minSalaryPersId = -1;
+            for (int j = 0; j < employeeCounter; j++) {
+                if (personnel[j].getDeptId() == deptId) {
+                    if (minSalary < 0 || minSalary > personnel[j].getSalary()) {
+                        minSalary = personnel[j].getSalary();
+                        minSalaryPersId = j + 1;
+                    }
+                }
+            }
+            System.out.print("Dept. No." + deptId + ". " + depts[deptId].getName() +
+                    "\nMinimun salary of " + minSalary + " earned\n");
+            for (int j = 0; j < employeeCounter; j++) {
+                if (personnel[j].getSalary() == minSalary) {
+                    System.out.println(personnel[j].getPerson());
+                }
+            }
+
+        }
     }
 }
