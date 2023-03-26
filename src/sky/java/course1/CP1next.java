@@ -1,13 +1,13 @@
 package sky.java.course1;
 
-public class CP1base {
+public class CP1next {
+
     public static int employeeCounter;
     public static Employee[] personnel = new Employee[10];
     public static Department[] depts = new Department[6];
 
     public static void main(String[] args) {
-        System.out.println("\nCOURSE PROJECT 1\n" +
-                             "----------------");
+        System.out.println("\nCOURSE PROJECT 1 NEXT\n" + "----------------" + "\nadvanced level\n");
 
         Person john = new Person("John", "Peter", "Smith");
         Person anna = new Person("Anna", "Petrovna", "Ivanova");
@@ -29,13 +29,7 @@ public class CP1base {
         for (int i = 0; i <= depts.length - 1; i++) {
             depts[i] = Department.setDepartment(i, deptNames[i]);
         }
-
-        printMaxSalaryInfo();
-        printMinimumSalaryInfo();
-        printAverageSalary();
         printPersonnelInfo();
-        printPersonnelNames();
-
         indexSalaryAllStaff(10);
         printPersonnelInfo();
 
@@ -88,8 +82,8 @@ public class CP1base {
 
     public static void printPersonnelInfo() {
         System.out.println("\nCOMPANY CREW INFORMATION\n" +
-                             "------------------------");
-        for (int i=0 ; i<=employeeCounter-1 ; i++) {
+                "------------------------");
+        for (int i = 0; i <= employeeCounter - 1; i++) {
             System.out.println(personnel[i].getPersId() + ". " + personnel[i].getPerson() +
                     "\t\t" + depts[personnel[i].getDeptId()] + "\tSalary: " + personnel[i].getSalary());
         }
@@ -98,12 +92,13 @@ public class CP1base {
     public static void printPersonnelNames() {
         System.out.println("\nCOMPANY CREW LIST\n" +
                 "-----------------");
-        for (int i=0 ; i<=employeeCounter-1 ; i++) {
+        for (int i = 0; i <= employeeCounter - 1; i++) {
             System.out.println(personnel[i].getPersId() + ". " + personnel[i].getPerson());
         }
 
     }
-    public static float calcAverageSalary(){
+
+    public static float calcAverageSalary() {
         int m = 0;
         for (int i = 0; i < employeeCounter; i++) {
             m += personnel[i].getSalary();
@@ -122,5 +117,4 @@ public class CP1base {
             personnel[i].setSalary(newSalary);
         }
     }
-
 }

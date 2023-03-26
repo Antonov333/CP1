@@ -30,5 +30,7 @@ public class Department {
         return "Dept No." + deptNo + ": " + name;
     }
 
-
+    public static Department setDepartment(int deptNo, String deptName) {
+        return new Department(deptNo, deptName);
+    }
 }
