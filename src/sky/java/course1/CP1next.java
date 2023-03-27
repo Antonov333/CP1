@@ -19,10 +19,10 @@ public class CP1next {
         Employee salesManager = new Employee(3, tatyana, 2, 95000);
         Employee productionManager = new Employee(4, ketsuro, 3, 275000);
 
-        enroll(boss);
-        enroll(officeManager);
-        enroll(salesManager);
-        enroll(productionManager);
+        enroll(boss, 1);
+        enroll(officeManager, 1);
+        enroll(salesManager, 2);
+        enroll(productionManager, 3);
 
         String[] deptNames = new String[]{"Projected", "Management", "Sales", "Production", "Delivery", "Marketing"};
 
@@ -42,7 +42,7 @@ public class CP1next {
         }
         Person gary = new Person("Gary", "Alexandrovich", "Vainerchuk");
         Employee marketingManager = new Employee(1, gary, 5, 205000);
-        enroll(marketingManager);
+        enroll(marketingManager, 5);
 
         printPersonnelInfo();
         System.out.println(personnel[employeeCounter - 1]);
@@ -50,12 +50,25 @@ public class CP1next {
         printDeptInfo(5);
 
         printDeptMinSalaryInfo(1);
-        
+        printDeptMaxSalaryInfo(5);
+        printDeptAvSalaryInfo(3);
+
+        printDeptInfo(1);
+        indexSalaryDeptStaff(1, 5);
+        printDeptInfo(1);
+
+        printDeptStaffNames(1);
+
+        printSalaryHigher(200000);
+
+        printSalaryLesser(150000);
+
 
     }
 
-    public static void enroll(Employee candidate) {
+    public static void enroll(Employee candidate, int deptId) {
         personnel[employeeCounter] = candidate;
+        personnel[employeeCounter].setDeptId(deptId);
         personnel[employeeCounter].setPersId(employeeCounter + 1);
         employeeCounter++;
     }
@@ -178,13 +191,111 @@ public class CP1next {
                 }
             }
             System.out.print("Dept. No." + deptId + ". " + depts[deptId].getName() +
-                    "\nMinimun salary of " + minSalary + " earned\n");
+                    ". Minimum salary of " + minSalary + " earned ");
             for (int j = 0; j < employeeCounter; j++) {
                 if (personnel[j].getSalary() == minSalary) {
-                    System.out.println(personnel[j].getPerson());
+                    System.out.println(personnel[j].getPerson() + ".");
                 }
             }
 
         }
     }
-}
+
+    public static void printDeptMaxSalaryInfo(int deptId) {
+        if (countDeptPersonell(deptId) == 0) {
+            System.out.println("No personell hired to Dept. No." + deptId + " " + depts[deptId].getName());
+        } else {
+            int maxSalary = -1,
+                    maxSalaryPersId = -1;
+            for (int j = 0; j < employeeCounter; j++) {
+                if (personnel[j].getDeptId() == deptId) {
+                    if (maxSalary < 0 || maxSalary < personnel[j].getSalary()) {
+                        maxSalary = personnel[j].getSalary();
+                        maxSalaryPersId = j + 1;
+                    }
+                }
+            }
+            System.out.print("Dept. No." + deptId + ". " + depts[deptId].getName() +
+                    ". Maximum salary of " + maxSalary + " earned ");
+            for (int j = 0; j < employeeCounter; j++) {
+                if (personnel[j].getSalary() == maxSalary) {
+                    System.out.println(personnel[j].getPerson() + ".");
+                }
+            }
+
+        }
+    }
+
+    public static void printDeptAvSalaryInfo(int deptId) {
+        int c = countDeptPersonell(deptId);
+        int sum = 0;
+        if (c == 0) {
+            System.out.println("No personell hired to Dept. No." + deptId + " " + depts[deptId].getName());
+        } else {
+
+            for (int j = 0; j < employeeCounter; j++) {
+                sum = +personnel[j].getSalary();
+            }
+        }
+
+        System.out.print("Dept. No." + deptId + ". " + depts[deptId].getName() +
+                ". Average salary is " + (double) (sum / c));
+
+    }
+
+    public static void indexSalaryDeptStaff(int deptId, int index) {
+        int newSalary = 0;
+        for (int i = 0; i <= employeeCounter - 1; i++) {
+            if (personnel[i].getDeptId() == deptId) {
+                newSalary = (personnel[i].getSalary()) * (index + 100) / 100;
+                personnel[i].setSalary(newSalary);
+            }
+        }
+    }
+
+    public static void printDeptStaffNames(int deptId) {
+        System.out.println(depts[deptId]);
+        for (int i = 0; i <= employeeCounter - 1; i++) {
+            if (personnel[i].getDeptId() == deptId) {
+                System.out.println(personnel[i].getPerson());
+            }
+        }
+
+    }
+
+    public static int getMaxSalary() {
+        return personnel[getMaxSalaryPersID() - 1].getSalary();
+    }
+
+    public static int getMinSalary() {
+        return personnel[getMinSalaryPersID() - 1].getSalary();
+    }
+
+
+    public static void printSalaryHigher(int level) {
+        if (level > getMaxSalary()) {
+            System.out.println("Maximum salary in company of " + getMaxSalary() + " is lesser than " + level);
+        }
+        System.out.println("Salary over or equal " + level + " achieved");
+        for (int i = 0; i <= employeeCounter - 1; i++) {
+            if (personnel[i].getSalary() >= level) {
+                System.out.println(personnel[i]);
+            }
+        }
+    }
+
+    public static void printSalaryLesser(int level) {
+        if (level < getMinSalary()) {
+            System.out.println("Minimum salary in company of " + getMinSalary() + " is higher than  " + level);
+        }
+        System.out.println("Salary lesser or equal " + level + " earned");
+        for (int i = 0; i <= employeeCounter - 1; i++) {
+            if (personnel[i].getSalary() <= level) {
+                System.out.println(personnel[i]);
+            }
+        }
+    }
+
+} // CP1next class
+
+

@@ -7,7 +7,7 @@ public class CP1base {
 
     public static void main(String[] args) {
         System.out.println("\nCOURSE PROJECT 1\n" +
-                             "----------------");
+                "----------------");
 
         Person john = new Person("John", "Peter", "Smith");
         Person anna = new Person("Anna", "Petrovna", "Ivanova");
@@ -88,8 +88,8 @@ public class CP1base {
 
     public static void printPersonnelInfo() {
         System.out.println("\nCOMPANY CREW INFORMATION\n" +
-                             "------------------------");
-        for (int i=0 ; i<=employeeCounter-1 ; i++) {
+                "------------------------");
+        for (int i = 0; i <= employeeCounter - 1; i++) {
             System.out.println(personnel[i].getPersId() + ". " + personnel[i].getPerson() +
                     "\t\t" + depts[personnel[i].getDeptId()] + "\tSalary: " + personnel[i].getSalary());
         }
@@ -98,12 +98,13 @@ public class CP1base {
     public static void printPersonnelNames() {
         System.out.println("\nCOMPANY CREW LIST\n" +
                 "-----------------");
-        for (int i=0 ; i<=employeeCounter-1 ; i++) {
+        for (int i = 0; i <= employeeCounter - 1; i++) {
             System.out.println(personnel[i].getPersId() + ". " + personnel[i].getPerson());
         }
 
     }
-    public static float calcAverageSalary(){
+
+    public static float calcAverageSalary() {
         int m = 0;
         for (int i = 0; i < employeeCounter; i++) {
             m += personnel[i].getSalary();
