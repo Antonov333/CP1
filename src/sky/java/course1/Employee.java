@@ -96,4 +96,5 @@ public class Employee {
         this.deptId = deptId;
         this.salary = salary;
     }
+
 }

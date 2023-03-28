@@ -63,6 +63,8 @@ public class CP1next {
 
         printSalaryLesser(150000);
 
+        printDeptTotalSalary(1);
+
 
     }
 
@@ -294,6 +296,23 @@ public class CP1next {
                 System.out.println(personnel[i]);
             }
         }
+    }
+
+    public static int sumDeptSalary(int deptId) {
+        int s = 0;
+
+        for (Employee element : personnel) {
+            if (element != null) {
+                if (element.getDeptId() == deptId) {
+                    s += element.getSalary();
+                }
+            }
+        }
+        return s;
+    }
+
+    public static void printDeptTotalSalary(int deptId) {
+        System.out.println(depts[deptId] + "\nTotal salary of department crew " + sumDeptSalary(deptId));
     }
 
 } // CP1next class

@@ -39,6 +39,8 @@ public class CP1base {
         indexSalaryAllStaff(10);
         printPersonnelInfo();
 
+        printTotalSalary();
+
     }
 
     public static void enroll(Employee candidate) {
@@ -122,6 +124,18 @@ public class CP1base {
             newSalary = (personnel[i].getSalary()) * (index + 100) / 100;
             personnel[i].setSalary(newSalary);
         }
+    }
+
+    public static int sumSalary() {
+        int s = 0;
+        for (Employee element : personnel) {
+            if (element != null) s += element.getSalary();
+        }
+        return s;
+    }
+
+    public static void printTotalSalary() {
+        System.out.println("Total sum of salaries: " + sumSalary());
     }
 
 }
