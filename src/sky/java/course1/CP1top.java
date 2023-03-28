@@ -41,15 +41,14 @@ public class CP1top {
         employeeBook.hire(candidates.dolby, 3, 249000);
         employeeBook.hire(candidates.wade, 4, 55000);
 
-        System.out.println(Arrays.toString(employeeBook.getTeam()));
-
-        System.out.println(deptBook);
-
         employeeBook.printAll();
         employeeBook.employeeChange(employeeBook.getPersonPosition(candidates.wade), 4, 59000);
         employeeBook.employeeChange(candidates.wade, 5, 59000);
         employeeBook.printPositionInfo(employeeBook.getPersonPosition(candidates.wade));
         employeeBook.employeeChange(new Person("X", "Y", "Z"), 3, 59000);
+
+        employeeBook.printDeptCrews();
+        employeeBook.printDepts();
     }
 }// CP1top class
 

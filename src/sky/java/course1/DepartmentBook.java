@@ -25,7 +25,7 @@ public class DepartmentBook { // for most complicated
     public String toString() {
         return "DepartmentBook{" +
                 "numberOfDepts=" + numberOfDepts +
-                ", listOfDepts=" + Arrays.toString(listOfDepts) +
+                "\n listOfDepts=" + Arrays.toString(listOfDepts) +
                 '}';
     }
 

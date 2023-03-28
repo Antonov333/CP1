@@ -2,6 +2,8 @@ package sky.java.course1;
 
 import java.util.Arrays;
 
+import static sky.java.course1.CP1top.depts;
+
 public class EmployeeBook {
     private int numberOfPositions;
     private Employee team[] = new Employee[numberOfPositions];
@@ -46,7 +48,7 @@ public class EmployeeBook {
             i++;
         }
         if (hired) {
-            System.out.println("New person hired as follows\n" + team[i] + CP1top.depts[deptID]);
+            System.out.println("New person hired as follows\n" + team[i] + depts[deptID]);
         } else {
             System.out.println("No vacant position at the moment");
         }
@@ -66,7 +68,8 @@ public class EmployeeBook {
         } else {
             team[p].setDeptId(newDept);
             team[p].setSalary(newSalary);
-            System.out.println(team[p].getPerson() + " assigned to Dept.No" + team[p].getDeptId() + "");
+            System.out.println(team[p].getPerson() + " assigned to Dept.No. " + team[p].getDeptId() + " with salary of "
+                    + team[p].getSalary());
         }
     }
 
@@ -105,23 +108,36 @@ public class EmployeeBook {
     }
 
     public void printAll() {
+        System.out.println("\nCompany personell");
         for (Employee e : team) {
-            System.out.println(e);
+            if (e != null) {
+                System.out.println(e);
+            }
         }
     }
 
     public void printDeptCrews() {
         System.out.println("List of personnel by departments");
-        int n = CP1top.depts.length;
+        int n = depts.length;
+        System.out.println("n=" + n);
+        int i = 0;
+        for (; i < n; i++) {
+
+            System.out.println(depts[i].toString());
+            for (int j = 0; j < team.length; j++) {
+                if (team[j] != null) {
+                    if (team[j].getDeptId() == i) {
+                        System.out.println(team[j].getPerson());
+                    }
+                }
+            }
+            System.out.println("");
+        }
     }
 
-
-    /** @Override public String toString() {
-    String s ="";
-    for ( Employee e: team)
-    {
-    s=s+e.toString() ;
+    public void printDepts() {
+        for (Department d : depts) {
+            System.out.println(d);
+        }
     }
-    return s;
-    }*/
-} // EmployBook class
+}// EmployeeBook class
