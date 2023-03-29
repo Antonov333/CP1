@@ -1,6 +1,9 @@
 package sky.java.course1;
 
 public class Persons {
+    // Сотрудники, которые будут приняты в компанию
+    // Все данные выдуманы, используются исключительно в демонстрационных целях.
+    // Все совпадения с реальными данными совершенно случайны
 
     public Person john = new Person("John", "Peter", "Smith");
     public Person anna = new Person("Anna", "Mikhailovna", "Ivanova");

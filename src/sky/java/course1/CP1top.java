@@ -1,17 +1,11 @@
 package sky.java.course1;
 
-import java.util.Arrays;
-
 public class CP1top {
 
-    DepartmentBook deptBook;
-
-    public static Employee[] personnel = new Employee[10];
     public static Department[] depts = new Department[6];
 
-
     public static void main(String[] args) {
-        System.out.println("\nCOURSE PROJECT 1 TOP\n" + "----------------" + "\nmost complicated level\n");
+        System.out.println("\nCOURSE PROJECT 1 TOP\n" + "----------------------" + "\nmost complicated level\n");
 
         String[] deptNames = new String[]{"Projected", "Management", "Sales", "Production", "Delivery", "Marketing"};
 
@@ -19,16 +13,10 @@ public class CP1top {
             depts[i] = Department.setDepartment(i, deptNames[i]);
         }
 
-        DepartmentBook deptBook = new DepartmentBook(depts);
-        System.out.println(deptBook);
-        deptBook.printDeptInfo(1);
-        System.out.println(deptBook.getNumberOfDepts());
-
         EmployeeBook employeeBook = new EmployeeBook(15);
 
         Persons candidates = new Persons();
-
-        System.out.println(employeeBook.getTeam().length);
+        System.out.println(employeeBook.getTeam().length); // принимаем сотрудников в компанию
         employeeBook.hire(candidates.john, 1, 199999);
         employeeBook.hire(candidates.anna, 1, 60000);
         employeeBook.hire(candidates.tatyana, 2, 95000);
@@ -59,13 +47,14 @@ public class CP1top {
         employeeBook.printDeptCrews();
         System.out.println(employeeBook.getDeptPersonnelCount(dept));
         employeeBook.printDeptStaff(dept);
-        System.out.println((double) (employeeBook.getDeptTotalSalary(dept)) /
-                (double) (employeeBook.getDeptPersonnelCount(dept)));
-
+        employeeBook.printDeptAverageSalary(dept);
         employeeBook.printDeptMinSalaryInfo(dept);
         employeeBook.printDeptMaxSalaryInfo(dept);
         System.out.println(employeeBook.getTeam()[employeeBook.getMaxSalaryPosition() - 1]);
         employeeBook.printAllnames();
+        employeeBook.indexEmployeeSalary(candidates.anna, 10);
+        employeeBook.indexAllSalaries(5);
+        employeeBook.indexDeptSalaries(3, 10);
     }
 }// CP1top class
 

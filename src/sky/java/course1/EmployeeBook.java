@@ -4,7 +4,7 @@ import static sky.java.course1.CP1top.depts;
 
 public class EmployeeBook {
     private int numberOfPositions;
-    private Employee team[] = new Employee[numberOfPositions];
+    private Employee[] team = new Employee[numberOfPositions];
 
 
     public EmployeeBook(int numberOfpositions) {
@@ -45,7 +45,7 @@ public class EmployeeBook {
             i++;
         }
         if (hired) {
-            System.out.println("New person hired as follows\n" + team[i] + depts[deptID]);
+            System.out.println("New person hired as follows\n" + team[i].getSalary() + " " + depts[deptID]);
         } else {
             System.out.println("No vacant position at the moment");
         }
@@ -84,7 +84,7 @@ public class EmployeeBook {
 
 
     public void printPositionInfo(int i) { // position in list, i.e. 1. John, 2. Anna, etc...
-        System.out.println(team[i - 1]);
+        System.out.println(team[i - 1] + "\n");
     }
 
     public int getDeptId(int p) {
@@ -111,6 +111,7 @@ public class EmployeeBook {
                 System.out.println(e);
             }
         }
+        System.out.println();
     }
 
     public void printAllnames() {
@@ -120,6 +121,7 @@ public class EmployeeBook {
                 System.out.println(e.getPerson());
             }
         }
+        System.out.println();
     }
 
     public void printDeptCrews() {
@@ -135,14 +137,16 @@ public class EmployeeBook {
                     }
                 }
             }
-            System.out.println("");
+
         }
+        System.out.println();
     }
 
     public void printDepts() {
         for (Department d : depts) {
             System.out.println(d);
         }
+        System.out.println();
     }
 
     public int getTotalSalary() {
@@ -156,7 +160,7 @@ public class EmployeeBook {
     }
 
     public void printTotalSalary() {
-        System.out.println("Total sum of salaries: " + getTotalSalary());
+        System.out.println("Total sum of salaries: " + getTotalSalary() + "\n");
     }
 
     public int getMinSalary() {
@@ -183,7 +187,7 @@ public class EmployeeBook {
                 }
             }
         }
-
+        System.out.println();
     }
 
     public int getMaxSalary() {
@@ -208,7 +212,7 @@ public class EmployeeBook {
                 }
             }
         }
-
+        System.out.println();
     }
 
     public int getMaxSalaryPosition() {
@@ -239,7 +243,7 @@ public class EmployeeBook {
 
     public double getAverageSalary() {
         if (getPersonnelCount() != 0) {
-            return (double) ((double) getTotalSalary() / (double) getPersonnelCount());
+            return (double) getTotalSalary() / (double) getPersonnelCount();
         } else {
             return -1.0d;
         }
@@ -252,7 +256,7 @@ public class EmployeeBook {
         } else {
             System.out.printf("Average salary is %.2f\n", a);
         }
-
+        System.out.println();
     }
 
     public int getDeptTotalSalary(int deptId) {
@@ -264,7 +268,6 @@ public class EmployeeBook {
                 if (e.getDeptId() == deptId) {
                     s += e.getSalary();
                 }
-                ;
             }
         }
         return s;
@@ -297,10 +300,11 @@ public class EmployeeBook {
                 }
             }
         }
+        System.out.println();
     }
 
     public void printDeptTotalSalary(int deptId) {
-        System.out.println(depts[deptId] + "\n" + "Total salary over deparment " + getDeptTotalSalary(deptId));
+        System.out.println(depts[deptId] + "\n" + "Total salary over deparment " + getDeptTotalSalary(deptId) + "\n");
     }
 
     public double getDeptAverageSalary(int deptId) {
@@ -309,6 +313,7 @@ public class EmployeeBook {
 
     public void printDeptAverageSalary(int deptId) {
         System.out.println("Average salary over " + depts[deptId] + " is " + getDeptAverageSalary(deptId));
+        System.out.println();
     }
 
     public int getDeptMinSalaryPosition(int deptId) {
@@ -331,17 +336,17 @@ public class EmployeeBook {
 
     public int getDeptMinSalary(int deptId) {
         int min = 0;
-        int i = 0;
         boolean notUpdatedYet = true;
-        for (; i < team.length; i++) {
-            if (team[i] == null) {
+        for (Employee e : team
+        ) {
+            if (e == null) {
             } else {
-                if (team[i].getDeptId() == deptId && (min > team[i].getSalary() || notUpdatedYet)) {
-                    min = team[i].getSalary();
+                if (e.getDeptId() == deptId && (min > e.getSalary() || notUpdatedYet)) {
                     notUpdatedYet = false;
+                    min = e.getSalary();
                 }
-            }
 
+            }
         }
         return min;
     }
@@ -357,6 +362,7 @@ public class EmployeeBook {
             }
 
         }
+        System.out.println();
     }
 
     public int getDeptMaxSalaryPosition(int deptId) {
@@ -393,7 +399,7 @@ public class EmployeeBook {
                 }
             }
         }
-
+        System.out.println();
     }
 
     public void printDeptMaxSalaryInfo(int deptId) {
@@ -406,6 +412,46 @@ public class EmployeeBook {
                 if (e.getDeptId() == deptId && e.getSalary() == m) {
                     System.out.println(e);
                 }
+            }
+        }
+        System.out.println();
+    }
+
+    public void indexAllSalaries(int percentRate) {
+        System.out.println("All salaries to be indexed by " + percentRate + "%");
+        for (Employee e : team
+        ) {
+            if (e != null) {
+                System.out.print(e.getPerson() + "'s salary of " + e.getSalary() + " is indexed by " + percentRate +
+                        "% and set to ");
+                e.setSalary(e.getSalary() * (100 + percentRate) / 100);
+                System.out.println(e.getSalary());
+            }
+        }
+        System.out.println();
+    }
+
+    public void indexEmployeeSalary(Person person, int percentRate) {
+        int p = getPersonPosition(person);
+        if (p == -1) {
+            System.out.println(p + " is not hired at the moment");
+        } else {
+            int oldsalary = team[p - 1].getSalary();
+            System.out.print(team[p - 1].getPerson() + "'s salary of " + +oldsalary);
+            team[p - 1].setSalary(oldsalary * (100 + percentRate) / 100);
+            System.out.println("is indexed by " + percentRate + "% and set to " + team[p - 1].getSalary());
+
+        }
+    }
+
+    public void indexDeptSalaries(int deptId, int percentRate) {
+        System.out.println(depts[deptId] + ". Salaries to be indexed by " + percentRate + "%");
+        for (Employee e : team
+        ) {
+            if (e != null && e.getDeptId() == deptId) {
+                System.out.print(e + " Salary indexed by " + percentRate + "% and set to ");
+                e.setSalary(e.getSalary() * (100 + percentRate) / 100);
+                System.out.println(e.getSalary());
             }
         }
     }
