@@ -29,7 +29,7 @@ public class CP1top {
         Persons candidates = new Persons();
 
         System.out.println(employeeBook.getTeam().length);
-        employeeBook.hire(candidates.john, 1, 19999);
+        employeeBook.hire(candidates.john, 1, 199999);
         employeeBook.hire(candidates.anna, 1, 60000);
         employeeBook.hire(candidates.tatyana, 2, 95000);
         employeeBook.hire(candidates.ketsuro, 3, 275000);
@@ -45,10 +45,27 @@ public class CP1top {
         employeeBook.employeeChange(employeeBook.getPersonPosition(candidates.wade), 4, 59000);
         employeeBook.employeeChange(candidates.wade, 5, 59000);
         employeeBook.printPositionInfo(employeeBook.getPersonPosition(candidates.wade));
-        employeeBook.employeeChange(new Person("X", "Y", "Z"), 3, 59000);
+        employeeBook.employeeChange(new Person("A", "B", "C"), 3, 59000);
 
         employeeBook.printDeptCrews();
         employeeBook.printDepts();
+        employeeBook.printTotalSalary();
+        employeeBook.printMinSalary();
+        employeeBook.printMaxSalary();
+        System.out.println("Number of persons hired: " + employeeBook.getPersonnelCount());
+        employeeBook.printAverageSalary();
+
+        int dept = 4;
+        employeeBook.printDeptCrews();
+        System.out.println(employeeBook.getDeptPersonnelCount(dept));
+        employeeBook.printDeptStaff(dept);
+        System.out.println((double) (employeeBook.getDeptTotalSalary(dept)) /
+                (double) (employeeBook.getDeptPersonnelCount(dept)));
+
+        employeeBook.printDeptMinSalaryInfo(dept);
+        employeeBook.printDeptMaxSalaryInfo(dept);
+        System.out.println(employeeBook.getTeam()[employeeBook.getMaxSalaryPosition() - 1]);
+        employeeBook.printAllnames();
     }
 }// CP1top class
 

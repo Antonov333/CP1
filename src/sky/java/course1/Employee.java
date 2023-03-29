@@ -72,7 +72,7 @@ public class Employee {
         return persId +
                 ". " + person +
                 ". Dept.No." + deptId +
-                ". Salary=" + salary + "<>";
+                ". Salary=" + salary;
     }
 
     @Override

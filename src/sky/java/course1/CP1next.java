@@ -167,7 +167,7 @@ public class CP1next {
         System.out.println(personnel[persId].getPerson() + " Salary: " + personnel[persId].getSalary());
     }
 
-    public static int countDeptPersonell(int deptId) {
+    public static int countDeptPersonnel(int deptId) {
         int deptPeopleCount = 0;
 
         for (int j = 0; j < employeeCounter; j++) {
@@ -179,8 +179,8 @@ public class CP1next {
     }
 
     public static void printDeptMinSalaryInfo(int deptId) {
-        if (countDeptPersonell(deptId) == 0) {
-            System.out.println("No personell hired to Dept. No." + deptId + " " + depts[deptId].getName());
+        if (countDeptPersonnel(deptId) == 0) {
+            System.out.println("No Personnel hired to Dept. No." + deptId + " " + depts[deptId].getName());
         } else {
             int minSalary = -1,
                     minSalaryPersId = -1;
@@ -204,8 +204,8 @@ public class CP1next {
     }
 
     public static void printDeptMaxSalaryInfo(int deptId) {
-        if (countDeptPersonell(deptId) == 0) {
-            System.out.println("No personell hired to Dept. No." + deptId + " " + depts[deptId].getName());
+        if (countDeptPersonnel(deptId) == 0) {
+            System.out.println("No Personnel hired to Dept. No." + deptId + " " + depts[deptId].getName());
         } else {
             int maxSalary = -1,
                     maxSalaryPersId = -1;
@@ -229,10 +229,10 @@ public class CP1next {
     }
 
     public static void printDeptAvSalaryInfo(int deptId) {
-        int c = countDeptPersonell(deptId);
+        int c = countDeptPersonnel(deptId);
         int sum = 0;
         if (c == 0) {
-            System.out.println("No personell hired to Dept. No." + deptId + " " + depts[deptId].getName());
+            System.out.println("No Personnel hired to Dept. No." + deptId + " " + depts[deptId].getName());
         } else {
 
             for (int j = 0; j < employeeCounter; j++) {
