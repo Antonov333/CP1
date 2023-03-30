@@ -277,11 +277,12 @@ public class CP1next {
     public static void printSalaryHigher(int level) {
         if (level > getMaxSalary()) {
             System.out.println("Maximum salary in company of " + getMaxSalary() + " is lesser than " + level);
-        }
-        System.out.println("Salary over or equal " + level + " achieved");
-        for (int i = 0; i <= employeeCounter - 1; i++) {
-            if (personnel[i].getSalary() >= level) {
-                System.out.println(personnel[i]);
+        } else {
+            System.out.println("Salary over or equal " + level + " achieved");
+            for (int i = 0; i <= employeeCounter - 1; i++) {
+                if (personnel[i].getSalary() >= level) {
+                    System.out.println(personnel[i]);
+                }
             }
         }
     }
@@ -289,11 +290,12 @@ public class CP1next {
     public static void printSalaryLesser(int level) {
         if (level < getMinSalary()) {
             System.out.println("Minimum salary in company of " + getMinSalary() + " is higher than  " + level);
-        }
-        System.out.println("Salary lesser or equal " + level + " earned");
-        for (int i = 0; i <= employeeCounter - 1; i++) {
-            if (personnel[i].getSalary() <= level) {
-                System.out.println(personnel[i]);
+        } else {
+            System.out.println("Salary lesser or equal " + level + " earned");
+            for (int i = 0; i <= employeeCounter - 1; i++) {
+                if (personnel[i].getSalary() <= level) {
+                    System.out.println(personnel[i]);
+                }
             }
         }
     }

@@ -51,7 +51,7 @@ public class CP1top {
         employeeBook.printDeptMinSalaryInfo(dept);
         employeeBook.printDeptMaxSalaryInfo(dept);
         System.out.println(employeeBook.getTeam()[employeeBook.getMaxSalaryPosition() - 1]);
-        employeeBook.printAllnames();
+        employeeBook.printAllNames();
         employeeBook.indexEmployeeSalary(candidates.anna, 10);
         employeeBook.indexAllSalaries(5);
         employeeBook.indexDeptSalaries(3, 10);

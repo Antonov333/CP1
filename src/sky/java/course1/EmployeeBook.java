@@ -146,7 +146,7 @@ public class EmployeeBook {
         System.out.println();
     }
 
-    public void printAllnames() {
+    public void printAllNames() {
         System.out.println("\nCompany staff names");
         for (Employee e : team) {
             if (e != null) {
@@ -213,10 +213,8 @@ public class EmployeeBook {
         int min = getMinSalary();
         System.out.println("Minimum salary of " + min + " earned by");
         for (Employee employee : team) {
-            if (employee != null) {
-                if (employee.getSalary() == min) {
-                    System.out.println(employee);
-                }
+            if ((employee != null) && employee.getSalary() == min) {
+                System.out.println(employee);
             }
         }
         System.out.println();
