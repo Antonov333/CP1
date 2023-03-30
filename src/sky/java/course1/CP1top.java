@@ -55,6 +55,11 @@ public class CP1top {
         employeeBook.indexEmployeeSalary(candidates.anna, 10);
         employeeBook.indexAllSalaries(5);
         employeeBook.indexDeptSalaries(3, 10);
+
+        System.out.println(employeeBook.getTeam()[employeeBook.getPersonPosition(candidates.anna) - 1]);
+
+        employeeBook.fire(candidates.wade, 11);
+        employeeBook.fire(candidates.wade);
     }
 }// CP1top class
 

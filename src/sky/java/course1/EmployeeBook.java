@@ -58,6 +58,38 @@ public class EmployeeBook {
         System.out.println(" fired from company");
     }
 
+    public int gerPersonPosition(Person p) {
+        for (int i = 0; i < team.length; i++) {
+            if (team[i] != null) {
+                if (team[i].getPerson().equals(p)) {
+                    return i + 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public void fire(Person p) {
+        int pos = gerPersonPosition(p);
+        if (pos == -1) {
+            System.out.print(p + " is not on company list");
+        } else {
+            System.out.print(p);
+            team[pos - 1] = null;
+            System.out.println(" has just been fired from company");
+        }
+    }
+
+    public void fire(Person person, int position) {
+        if (position != getPersonPosition(person)) {
+            System.out.println(person + " is not hired at " + position + "in company list");
+        } else {
+            System.out.print(person);
+            team[position - 1] = null;
+            System.out.println(" has just been fired from company");
+        }
+    }
+
     public void employeeChange(int position, int newDept, int newSalary) {
         int p = position - 1;
         if (team[p] == null) {

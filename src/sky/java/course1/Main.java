@@ -1,4 +1,4 @@
-import sky.java.course1.CP1top; // Класс СP1top - самый высокий уровень сложности
+import sky.java.course1.CP1top;
 // Классы CP1base и CP1next - базовый уровень сложности и повышенный
 
 public class Main {
